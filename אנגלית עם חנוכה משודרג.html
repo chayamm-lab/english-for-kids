@@ -1,0 +1,783 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>אנגלית עם חנוכה</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Secular+One&family=Heebo:wght@400;500;700&family=Andika:wght@400;700&display=swap">
+<style>
+/* Concept: a die-cut sticker book. Every word is a sticker (white cut-out edge) on its own coloured sheet with an ink outline and a hard offset shadow.
+   Home: title, a menorah that lights up once on load, then four tilted sticker sheets. Games: one task per screen, Hebrew caption, replay-audio button.
+   Type: Secular One for Hebrew headings, Heebo for Hebrew text, Andika for English words (single-storey a and g, as taught in first reading). */
+:root{
+  --ground:#BFDAFF;
+  --paper:#FFFFFF;
+  --ink:#1A2150;
+  --edge:#1A2150;
+  --muted:#43508E;
+  --brand:#2B47D8;
+  --soft:#E3ECFF;
+  --gold:#FFC53D;
+  --gold-ink:#1A2150;
+  --good:#0B7F45;
+  --bad:#C93A2C;
+  --sheet:#FFFFFF;
+  --night:#2B3A9E;
+  --o:3px;
+  --pattern:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='white' stroke-opacity='.5' stroke-width='2' stroke-linejoin='round'%3E%3Cpolygon points='35,19 48.9,43 21.1,43'/%3E%3Cpolygon points='35,51 21.1,27 48.9,27'/%3E%3Cpolygon points='105,89 118.9,113 91.1,113'/%3E%3Cpolygon points='105,121 91.1,97 118.9,97'/%3E%3C/g%3E%3C/svg%3E");
+  --f-display:'Secular One','Heebo',Arial,sans-serif;
+  --f-body:'Heebo',Arial,sans-serif;
+  --f-word:'Andika','Trebuchet MS',Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#141B4D;--paper:#222B75;--ink:#F2F5FF;--edge:#060919;--muted:#B9C4F4;--brand:#A9BDFF;--soft:#323D8F;
+    --good:#4CD69B;--bad:#FF8A70;color-scheme:dark;
+    --pattern:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='white' stroke-opacity='.09' stroke-width='2' stroke-linejoin='round'%3E%3Cpolygon points='35,19 48.9,43 21.1,43'/%3E%3Cpolygon points='35,51 21.1,27 48.9,27'/%3E%3Cpolygon points='105,89 118.9,113 91.1,113'/%3E%3Cpolygon points='105,121 91.1,97 118.9,97'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#141B4D;--paper:#222B75;--ink:#F2F5FF;--edge:#060919;--muted:#B9C4F4;--brand:#A9BDFF;--soft:#323D8F;
+  --good:#4CD69B;--bad:#FF8A70;color-scheme:dark;
+  --pattern:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='white' stroke-opacity='.09' stroke-width='2' stroke-linejoin='round'%3E%3Cpolygon points='35,19 48.9,43 21.1,43'/%3E%3Cpolygon points='35,51 21.1,27 48.9,27'/%3E%3Cpolygon points='105,89 118.9,113 91.1,113'/%3E%3Cpolygon points='105,121 91.1,97 118.9,97'/%3E%3C/g%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}
+body{
+  background-color:var(--ground);background-image:var(--pattern);background-size:140px 140px;
+  color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.55;
+  padding-block:12px 40px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-tap-highlight-color:transparent;
+}
+.wrap{max-width:720px;margin:0 auto}
+.ltr{direction:ltr;unicode-bidi:isolate}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
+button:disabled{cursor:default}
+:focus-visible{outline:4px solid var(--gold);outline-offset:3px}
+h1,h2{font-family:var(--f-display);font-weight:400;margin:0;text-wrap:balance}
+h1{font-size:clamp(34px,10vw,52px);line-height:1.05}
+h2{font-size:clamp(24px,6.5vw,30px);line-height:1.15}
+svg.ic{width:22px;height:22px;flex:none}
+
+/* sticker pictures: white die-cut edge + soft drop */
+.art svg{display:block;width:100%;height:100%;
+  filter:drop-shadow(var(--o) 0 0 #fff) drop-shadow(calc(var(--o)*-1) 0 0 #fff) drop-shadow(0 var(--o) 0 #fff) drop-shadow(0 calc(var(--o)*-1) 0 #fff) drop-shadow(0 calc(var(--o)*1.5) 0 rgba(10,15,60,.3));
+}
+
+/* controls */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;margin-bottom:6px}
+.iconbtn,.pill,.btn,.navbtn,.hear{border:3px solid var(--edge);box-shadow:0 5px 0 var(--edge);transition:transform .08s,box-shadow .08s}
+.iconbtn:active,.pill:active,.btn:active,.navbtn:active,.hear:active,.tile:active,.opt:active{transform:translateY(4px);box-shadow:0 1px 0 var(--edge)}
+.iconbtn{width:54px;height:54px;border-radius:50%;background:var(--gold);color:var(--gold-ink);display:grid;place-items:center;flex:none}
+.iconbtn svg{width:26px;height:26px}
+.pill{min-height:50px;padding:0 18px;border-radius:999px;background:var(--paper);display:inline-flex;align-items:center;gap:8px;font-weight:700}
+.btn{min-height:58px;padding:0 26px;border-radius:999px;background:var(--gold);color:var(--gold-ink);font-weight:700;font-size:19px;display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.btn:disabled{opacity:.5;transform:translateY(4px);box-shadow:0 1px 0 var(--edge)}
+.note{background:var(--paper);border:3px solid var(--edge);border-radius:16px;padding:10px 14px;font-size:15px;margin-block:8px}
+
+/* home */
+.hero{display:grid;gap:14px;margin-block:10px 26px}
+.hero-meno{width:min(100%,440px);margin:0 auto}
+.hero-meno svg{display:block;width:100%;height:auto;
+  filter:drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 5px 0 #fff) drop-shadow(0 -5px 0 #fff);
+}
+.greet{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.hi{font-family:var(--f-display);font-size:clamp(28px,7.5vw,36px);line-height:1.1}
+.hi-en{font-family:var(--f-word);font-weight:700;font-size:20px;color:var(--brand)}
+.menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px}
+.tile{background:var(--sheet);border:3px solid var(--edge);border-radius:30px;box-shadow:0 6px 0 var(--edge);padding:12px;display:flex;flex-direction:column;align-items:center;gap:10px;min-height:196px;transition:transform .08s,box-shadow .08s}
+.tile:nth-child(1){rotate:-1.6deg}
+.tile:nth-child(2){rotate:1.4deg}
+.tile:nth-child(3){rotate:1deg}
+.tile:nth-child(4){rotate:-1.2deg}
+.tile .art{width:100%;max-width:118px;aspect-ratio:1;--o:4px}
+.lab{width:100%;background:var(--paper);border:3px solid var(--edge);border-radius:16px;padding:6px 8px;text-align:center;font-family:var(--f-display);font-size:19px;line-height:1.2;color:var(--ink)}
+.lab small{display:block;font-family:var(--f-word);font-size:15px;font-weight:700;color:var(--muted)}
+
+/* sub-screens */
+.bar{display:flex;align-items:center;gap:10px;margin-block:8px 12px}
+.bar h2{flex:1;min-width:0;text-align:center}
+.hint{background:var(--paper);border:3px solid var(--edge);border-radius:20px;box-shadow:0 4px 0 var(--edge);padding:10px 16px;margin:0 0 22px;font-size:17px;font-weight:500}
+
+/* learn */
+.bigcard{width:100%;display:grid;text-align:center}
+.bigcard .sheet{position:relative;background:var(--sheet);border:3px solid var(--edge);border-radius:36px;box-shadow:0 6px 0 var(--edge);padding:24px;display:grid;place-items:center;transition:background-color .25s}
+.bigcard .art{width:min(70vw,300px);aspect-ratio:1;--o:7px}
+.badge{position:absolute;inset-block-start:14px;inset-inline-start:14px;width:50px;height:50px;border-radius:50%;background:var(--gold);color:var(--gold-ink);border:3px solid var(--edge);display:grid;place-items:center}
+.badge svg{width:26px;height:26px}
+.label{position:relative;background:var(--paper);border:3px solid var(--edge);border-radius:22px;box-shadow:0 5px 0 var(--edge);padding:6px 18px 10px;margin:-26px 18px 0;rotate:-1.2deg}
+.label .en{font-family:var(--f-word);font-weight:700;font-size:clamp(44px,13.5vw,72px);line-height:1.12;color:var(--brand)}
+.label .he{font-family:var(--f-display);font-size:30px;line-height:1.2}
+.learnnav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:26px}
+.navbtn{width:68px;height:68px;border-radius:50%;background:var(--gold);color:var(--gold-ink);display:grid;place-items:center;flex:none}
+.navbtn svg{width:30px;height:30px}
+.dots{display:flex;gap:6px;justify-content:center;align-items:center}
+.dot{width:13px;height:13px;border-radius:50%;background:var(--c,var(--soft));border:2.5px solid var(--edge);transition:transform .2s}
+.dot.on{transform:scale(1.55)}
+
+/* listen */
+.stars{display:flex;gap:4px;justify-content:center;margin-bottom:8px}
+.st{width:28px;height:28px;fill:var(--paper);stroke:var(--edge);stroke-width:1.3px;stroke-linejoin:round}
+.st.on{fill:var(--gold)}
+.hear{width:128px;height:128px;border-radius:50%;background:var(--gold);color:var(--gold-ink);display:grid;place-items:center;margin:6px auto 8px;box-shadow:0 7px 0 var(--edge)}
+.hear svg{width:66px;height:66px}
+.hearlabel{text-align:center;font-weight:700;margin-bottom:18px}
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.opt{background:var(--sheet);border:3px solid var(--edge);border-radius:26px;box-shadow:0 5px 0 var(--edge);aspect-ratio:1;display:grid;place-items:center;padding:8px;transition:transform .08s,box-shadow .08s,opacity .2s}
+.opt .art{width:100%;height:100%;--o:3px}
+.opt.good{outline:6px solid var(--good);outline-offset:3px;animation:pop .5s}
+.opt.bad{opacity:.4;animation:shake .35s}
+.fbwrap{min-height:70px;display:grid;place-items:center;margin-top:16px}
+.fb{font-family:var(--f-display);font-size:26px;line-height:1.2;padding:6px 24px 8px;border-radius:999px;background:var(--paper);border:3px solid var(--edge);box-shadow:0 4px 0 var(--edge)}
+.fb:empty{visibility:hidden}
+.fb.good{color:var(--good)}
+.fb.bad{color:var(--bad)}
+.end{text-align:center;background:var(--paper);border:3px solid var(--edge);border-radius:32px;box-shadow:0 6px 0 var(--edge);padding:26px 16px;display:grid;gap:16px;justify-items:center}
+.end .big{font-family:var(--f-display);font-size:30px;line-height:1.2}
+.magen{width:112px;height:112px;color:var(--gold);background:var(--night);border:3px solid var(--edge);border-radius:50%;padding:20px}
+
+/* memory */
+.mem{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (min-width:560px){.mem{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.card{aspect-ratio:3/4;perspective:700px}
+.card .in{position:relative;width:100%;height:100%;transition:transform .4s;transform-style:preserve-3d}
+.card.flip .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;border:3px solid var(--edge);box-shadow:0 4px 0 var(--edge);display:grid;place-items:center;padding:6px;overflow:hidden}
+.front{background:var(--night);color:var(--gold)}
+.front svg{width:54%;height:auto}
+.back{background:var(--sheet);transform:rotateY(180deg);text-align:center}
+.card.done .back{outline:5px solid var(--good);outline-offset:-1px}
+.back .art{width:100%;aspect-ratio:1;--o:3px}
+.back .w{font-family:var(--f-word);font-weight:700;font-size:clamp(17px,4.8vw,24px);line-height:1.15;color:var(--brand);overflow-wrap:anywhere}
+
+/* count */
+.target{display:flex;align-items:center;justify-content:center;gap:14px;background:var(--paper);border:3px solid var(--edge);border-radius:22px;box-shadow:0 5px 0 var(--edge);padding:8px 16px 10px;margin:0 0 18px;rotate:-.8deg}
+.bignum{font-family:var(--f-display);font-size:54px;line-height:1;color:var(--brand);min-width:44px;text-align:center}
+.target .t{font-family:var(--f-display);font-size:26px;line-height:1.2}
+.menorah{background:var(--night);border:3px solid var(--edge);border-radius:28px;box-shadow:0 6px 0 var(--edge);padding:12px 6px;cursor:pointer}
+.menorah svg{display:block;width:100%;height:auto}
+.cd .fl{opacity:0;transition:opacity .3s}
+.cd.lit .fl{opacity:1;animation:flick 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+.counter{display:flex;justify-content:center;margin-top:20px}
+.count{display:inline-flex;align-items:baseline;gap:14px;background:var(--paper);border:3px solid var(--edge);border-radius:999px;box-shadow:0 4px 0 var(--edge);padding:2px 26px 6px;font-family:var(--f-display)}
+.count .n{font-size:44px;line-height:1.1}
+.count .w{font-family:var(--f-word);font-weight:700;font-size:28px;color:var(--brand);min-width:2.2em}
+.row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:8px}
+
+/* the one orchestrated moment: hero candles light in order (shamash first, then 1 to 8) */
+.hero-meno .cd .fl{opacity:0;transform-box:fill-box;transform-origin:50% 100%;animation:ignite .55s ease-out forwards;animation-delay:calc(var(--i)*.28s + .5s)}
+
+@keyframes ignite{0%{opacity:0;transform:scale(.2)}60%{opacity:1;transform:scale(1.3)}100%{opacity:1;transform:scale(1)}}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+@keyframes flick{0%,100%{transform:scale(1,1)}50%{transform:scale(.94,1.07)}}
+@keyframes wob{0%,100%{transform:rotate(0)}25%{transform:rotate(-2deg)}75%{transform:rotate(2deg)}}
+.wob{animation:wob .6s}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero-meno .cd .fl{opacity:1}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-speaker" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 010 7M18.5 6a8.5 8.5 0 010 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 9l6 6M22 9l-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></symbol>
+    <symbol id="i-magen" viewBox="0 0 120 120"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"><polygon points="60,16 99.8,85 20.2,85"/><polygon points="60,108 20.2,39 99.8,39"/></g></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 2c1.4 4.6 6 6.8 6 12a6 6 0 01-12 0c0-2.6 1.4-4 2.4-5.6.6 1.2 1.2 1.7 1.8 1.9C10.4 7 11 4.6 12 2z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap" id="root" dir="rtl" lang="he">
+
+  <header class="topbar">
+    <h1>אנגלית עם חנוכה</h1>
+    <button class="iconbtn" id="soundBtn" aria-pressed="true" aria-label="הקול פועל. לחצו כדי להשתיק">
+      <svg><use href="#i-speaker"/></svg>
+    </button>
+  </header>
+  <div class="note" id="voiceNote" hidden></div>
+
+  <!-- HOME -->
+  <section data-screen="home">
+    <div class="hero">
+      <div class="hero-meno" id="heroMeno" role="img" aria-label="חנוכייה"></div>
+      <div class="greet">
+        <div>
+          <div class="hi">חג חנוכה שמח!</div>
+          <div class="hi-en ltr">Happy Chanukah!</div>
+        </div>
+        <button class="btn" data-instr="home"><svg class="ic"><use href="#i-speaker"/></svg>שמעו את ההסבר</button>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="tile" data-go="learn" style="--sheet:#FFE15A"><div class="art" data-art="dreidel"></div><span class="lab">לומדים מילים<small class="ltr">Learn</small></span></button>
+      <button class="tile" data-go="listen" style="--sheet:#FFA24A"><div class="art" data-art="star"></div><span class="lab">מקשיבים ובוחרים<small class="ltr">Listen</small></span></button>
+      <button class="tile" data-go="memory" style="--sheet:#35B8B0"><div class="art" data-art="gift"></div><span class="lab">משחק זיכרון<small class="ltr">Memory</small></span></button>
+      <button class="tile" data-go="count" style="--sheet:#FF7A66"><div class="art" data-art="candle"></div><span class="lab">סופרים נרות<small class="ltr">Count</small></span></button>
+    </div>
+  </section>
+
+  <!-- LEARN -->
+  <section data-screen="learn" hidden>
+    <div class="bar">
+      <button class="pill" data-go="home"><svg class="ic"><use href="#i-chev-r"/></svg>חזרה</button>
+      <h2>לומדים מילים</h2>
+      <button class="iconbtn" data-instr="learn" aria-label="שמעו שוב את ההסבר"><svg><use href="#i-speaker"/></svg></button>
+    </div>
+    <p class="hint">לחצו על התמונה כדי לשמוע את המילה באנגלית. לחצו על החץ כדי לעבור למילה הבאה.</p>
+    <button class="bigcard" id="learnCard" aria-label="שמעו את המילה">
+      <div class="sheet">
+        <div class="art" id="learnArt"></div>
+        <span class="badge"><svg><use href="#i-speaker"/></svg></span>
+      </div>
+      <div class="label">
+        <div class="en ltr" id="learnEn"></div>
+        <div class="he" id="learnHe"></div>
+      </div>
+    </button>
+    <div class="learnnav">
+      <button class="navbtn" id="learnPrev" aria-label="המילה הקודמת"><svg><use href="#i-chev-r"/></svg></button>
+      <div class="dots" id="learnDots"></div>
+      <button class="navbtn" id="learnNext" aria-label="המילה הבאה"><svg><use href="#i-chev-l"/></svg></button>
+    </div>
+  </section>
+
+  <!-- LISTEN -->
+  <section data-screen="listen" hidden>
+    <div class="bar">
+      <button class="pill" data-go="home"><svg class="ic"><use href="#i-chev-r"/></svg>חזרה</button>
+      <h2>מקשיבים ובוחרים</h2>
+      <button class="iconbtn" data-instr="listen" aria-label="שמעו שוב את ההסבר"><svg><use href="#i-speaker"/></svg></button>
+    </div>
+    <p class="hint">הקשיבו למילה באנגלית, ולחצו על התמונה הנכונה.</p>
+    <div id="listenPlay">
+      <div class="stars" id="lStars" aria-hidden="true"></div>
+      <button class="hear" id="hearBtn" aria-label="שמעו את המילה"><svg><use href="#i-speaker"/></svg></button>
+      <div class="hearlabel" style="text-align:center">שמעו שוב</div>
+      <div class="opts" id="lOpts"></div>
+      <div class="fbwrap"><div class="fb" id="lFb" aria-live="polite"></div></div>
+    </div>
+    <div class="end" id="listenEnd" hidden>
+      <svg class="magen"><use href="#i-magen"/></svg>
+      <div class="big" id="lEndText"></div>
+      <div class="stars" id="lEndStars" aria-hidden="true"></div>
+      <button class="btn" id="lAgain">שחקו שוב</button>
+    </div>
+  </section>
+
+  <!-- MEMORY -->
+  <section data-screen="memory" hidden>
+    <div class="bar">
+      <button class="pill" data-go="home"><svg class="ic"><use href="#i-chev-r"/></svg>חזרה</button>
+      <h2>משחק זיכרון</h2>
+      <button class="iconbtn" data-instr="memory" aria-label="שמעו שוב את ההסבר"><svg><use href="#i-speaker"/></svg></button>
+    </div>
+    <p class="hint">מצאו זוגות: תמונה ומילה באנגלית. לחצו על שני קלפים.</p>
+    <div class="mem" id="memGrid"></div>
+    <div class="end" id="memEnd" hidden style="margin-top:20px">
+      <svg class="magen"><use href="#i-magen"/></svg>
+      <div class="big">סיימתם! חג חנוכה שמח!</div>
+      <button class="btn" id="memAgain">שחקו שוב</button>
+    </div>
+  </section>
+
+  <!-- COUNT -->
+  <section data-screen="count" hidden>
+    <div class="bar">
+      <button class="pill" data-go="home"><svg class="ic"><use href="#i-chev-r"/></svg>חזרה</button>
+      <h2>סופרים נרות</h2>
+      <button class="iconbtn" data-instr="count" aria-label="שמעו שוב את ההסבר"><svg><use href="#i-speaker"/></svg></button>
+    </div>
+    <p class="hint">לחצו על החנוכייה כדי להדליק נר ולספור באנגלית.</p>
+    <div class="target"><span class="bignum" id="tNum"></span><span class="t" id="tText"></span></div>
+    <div class="menorah" id="menoWrap" role="img" aria-label="חנוכייה עם תשעה נרות"></div>
+    <div class="counter"><div class="count"><span class="n" id="cNum">0</span><span class="w ltr" id="cWord"></span></div></div>
+    <div class="fbwrap"><div class="fb" id="cFb" aria-live="polite"></div></div>
+    <div class="row">
+      <button class="btn" id="lightBtn"><svg class="ic"><use href="#i-flame"/></svg>הדליקו נר</button>
+      <button class="btn" id="cNext" hidden>עוד אתגר</button>
+      <button class="pill" id="cReset">מתחילים מחדש</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ---------- helpers ---------- */
+var $ = function(s, r){ return (r||document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+function shuffle(a){ a = a.slice(); for (var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+function wait(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
+
+/* ---------- vocabulary ---------- */
+var WORDS = [
+  {id:'menorah', en:'menorah', say:'menorah',   he:'חנוכייה'},
+  {id:'candle',  en:'candle',  say:'candle',    he:'נר'},
+  {id:'dreidel', en:'dreidel', say:'dray dull', he:'סביבון'},
+  {id:'donut',   en:'donut',   say:'donut',     he:'סופגנייה'},
+  {id:'coin',    en:'coin',    say:'coin',      he:'מטבע'},
+  {id:'oil',     en:'oil',     say:'oil',       he:'שמן'},
+  {id:'pancake', en:'pancake', say:'pancake',   he:'לביבה'},
+  {id:'gift',    en:'gift',    say:'gift',      he:'מתנה'},
+  {id:'star',    en:'Star of David', say:'Star of David', he:'מגן דוד'},
+  {id:'flame',   en:'flame',   say:'flame',     he:'להבה'}
+];
+var BYID = {}; WORDS.forEach(function(w){ BYID[w.id]=w; });
+/* each word has its own coloured sheet, picked so the picture stands out */
+var SHEET = {menorah:'#3E63F0', candle:'#FF7A66', dreidel:'#FFE15A', donut:'#8EC8FF', coin:'#B9A4FF', oil:'#FFA6C9', pancake:'#7BDCB5', gift:'#35B8B0', star:'#FFA24A', flame:'#2B3A9E'};
+var NUMS_EN = ['one','two','three','four','five','six','seven','eight'];
+var NOUN_HE = ['נר אחד','שני נרות','שלושה נרות','ארבעה נרות','חמישה נרות','שישה נרות','שבעה נרות','שמונה נרות'];
+var PRAISE = [['כל הכבוד!','Great job!'],['יופי!','Well done!'],['מצוין!','Excellent!'],['איזה כיף!','Hooray!']];
+function praise(){ return PRAISE[Math.floor(Math.random()*PRAISE.length)]; }
+function wordSay(w){ return ['en', w.say, 0.75]; }
+
+/* ---------- pictures (inline SVG) ---------- */
+var GOLD='#E2A21B', GOLD2='#B97E0B';
+function flame(x, y, s){
+  var h=18*s, w=6*s;
+  return '<path d="M'+x+' '+(y-h-2)+' C'+(x+w)+' '+(y-h*0.5)+' '+(x+w-1)+' '+(y-1)+' '+x+' '+(y-1)+' C'+(x-w+1)+' '+(y-1)+' '+(x-w)+' '+(y-h*0.5)+' '+x+' '+(y-h-2)+'Z" fill="#FF9F1C"/>'+
+         '<path d="M'+x+' '+(y-h*0.55)+' C'+(x+w*0.5)+' '+(y-h*0.3)+' '+(x+w*0.4)+' '+(y-1)+' '+x+' '+(y-1)+' C'+(x-w*0.4)+' '+(y-1)+' '+(x-w*0.5)+' '+(y-h*0.3)+' '+x+' '+(y-h*0.55)+'Z" fill="#FFE066"/>';
+}
+function menorahIcon(){
+  var s='<svg viewBox="0 0 120 120" aria-hidden="true">';
+  var arms=[['M12 66 V76 C12 90 40 94 60 94'],['M24 66 V76 C24 86 44 88 60 88'],['M36 66 V76 C36 82 48 82 60 82'],['M48 66 V74 C48 78 54 78 60 78']];
+  s+='<g fill="none" stroke="'+GOLD+'" stroke-width="4.5" stroke-linecap="round">';
+  arms.forEach(function(a){ s+='<path d="'+a[0]+'"/>'; });
+  s+='<g transform="translate(120 0) scale(-1 1)">';
+  arms.forEach(function(a){ s+='<path d="'+a[0]+'"/>'; });
+  s+='</g><path d="M60 66 V104" stroke-width="6"/></g>';
+  s+='<rect x="42" y="104" width="36" height="8" rx="4" fill="'+GOLD+'"/>';
+  [12,24,36,48,72,84,96,108].forEach(function(x){
+    s+='<rect x="'+(x-3.2)+'" y="42" width="6.4" height="24" rx="1.6" fill="#8DB8FF"/>'+flame(x,42,0.9)+'<rect x="'+(x-5)+'" y="65" width="10" height="4" rx="2" fill="'+GOLD+'"/>';
+  });
+  s+='<rect x="56.8" y="30" width="6.4" height="36" rx="1.6" fill="#6F9FF0"/>'+flame(60,30,1)+'<rect x="55" y="65" width="10" height="4" rx="2" fill="'+GOLD+'"/>';
+  return s+'</svg>';
+}
+var ART = {
+  menorah: menorahIcon(),
+  candle:
+    '<svg viewBox="0 0 120 120" aria-hidden="true">'+
+    '<rect x="42" y="52" width="36" height="52" rx="4" fill="#8DB8FF"/>'+
+    '<rect x="42" y="66" width="36" height="8" fill="#fff" opacity=".85"/><rect x="42" y="84" width="36" height="8" fill="#fff" opacity=".85"/>'+
+    '<path d="M32 104 H88 L82 113 H38 Z" fill="'+GOLD+'"/>'+
+    '<rect x="58.8" y="44" width="2.6" height="10" fill="#33415C"/>'+flame(60,46,2.1)+'</svg>',
+  dreidel:
+    '<svg viewBox="0 0 120 120" aria-hidden="true">'+
+    '<rect x="55" y="8" width="10" height="20" rx="4" fill="#9A6A2F"/>'+
+    '<polygon points="30,72 90,72 60,110" fill="#1D3FB5"/>'+
+    '<rect x="30" y="26" width="60" height="48" rx="9" fill="#2750D8"/>'+
+    '<rect x="36" y="31" width="9" height="38" rx="4" fill="#fff" opacity=".22"/>'+
+    '<text x="63" y="62" text-anchor="middle" font-family="Heebo, Arial, sans-serif" font-size="34" font-weight="700" fill="#fff">נ</text></svg>',
+  donut:
+    '<svg viewBox="0 0 120 120" aria-hidden="true">'+
+    '<ellipse cx="60" cy="68" rx="46" ry="34" fill="#E3A049"/>'+
+    '<path d="M16 70 C34 80 86 80 104 70" fill="none" stroke="#F2C37B" stroke-width="5" stroke-linecap="round"/>'+
+    '<ellipse cx="60" cy="54" rx="34" ry="19" fill="#fff"/>'+
+    '<circle cx="60" cy="52" r="10" fill="#D93A4A"/><circle cx="56" cy="48" r="3.4" fill="#F27C86"/>'+
+    '<g fill="#fff"><circle cx="24" cy="62" r="2.4"/><circle cx="96" cy="60" r="2.4"/><circle cx="34" cy="84" r="2.2"/><circle cx="88" cy="86" r="2.2"/><circle cx="60" cy="92" r="2.2"/></g></svg>',
+  coin:
+    '<svg viewBox="0 0 120 120" aria-hidden="true">'+
+    '<circle cx="70" cy="66" r="40" fill="'+GOLD2+'"/>'+
+    '<circle cx="58" cy="58" r="42" fill="#F5B82E" stroke="'+GOLD2+'" stroke-width="4"/>'+
+    '<circle cx="58" cy="58" r="33" fill="none" stroke="'+GOLD2+'" stroke-width="3"/>'+
+    '<g transform="translate(58 58) scale(.4) translate(-60 -62)" style="color:'+GOLD2+'"><use href="#i-magen"/></g>'+
+    '<path d="M30 40 A34 34 0 0 1 52 24" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/></svg>',
+  oil:
+    '<svg viewBox="0 0 120 120" aria-hidden="true">'+
+    '<rect x="51" y="6" width="18" height="12" rx="3" fill="#8B5A2B"/>'+
+    '<path d="M50 16 H70 V34 C86 42 92 54 92 70 V96 Q92 110 78 110 H42 Q28 110 28 96 V70 C28 54 34 42 50 34 Z" fill="#C9D957" stroke="#6E8A1C" stroke-width="3"/>'+
+    '<path d="M36 70 C36 58 40 50 50 44" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".55"/>'+
+    '<rect x="40" y="64" width="40" height="30" rx="5" fill="#fff"/>'+
+    '<ellipse cx="60" cy="79" rx="8" ry="11" fill="#6E8A1C"/><ellipse cx="57" cy="75" rx="2.4" ry="4" fill="#A8C03A"/></svg>',
+  pancake:
+    '<svg viewBox="0 0 120 120" aria-hidden="true">'+
+    [90,76,62].map(function(y){
+      return '<rect x="18" y="'+y+'" width="84" height="12" fill="#B5762A"/><ellipse cx="60" cy="'+(y+12)+'" rx="42" ry="12" fill="#B5762A"/><ellipse cx="60" cy="'+y+'" rx="42" ry="12" fill="#E0A04C"/>';
+    }).join('')+
+    '<g fill="#B5762A" opacity=".7"><circle cx="38" cy="62" r="2.2"/><circle cx="76" cy="66" r="2.4"/><circle cx="52" cy="70" r="1.8"/><circle cx="88" cy="60" r="1.8"/></g>'+
+    '<ellipse cx="60" cy="52" rx="20" ry="10" fill="#fff" stroke="#E3D9C2" stroke-width="2"/><ellipse cx="55" cy="49" rx="7" ry="3" fill="#EEE7D7"/></svg>',
+  gift:
+    '<svg viewBox="0 0 120 120" aria-hidden="true">'+
+    '<rect x="24" y="60" width="72" height="46" rx="4" fill="#2750D8"/>'+
+    '<rect x="18" y="46" width="84" height="18" rx="4" fill="#3A63E8"/>'+
+    '<rect x="53" y="46" width="14" height="60" fill="'+GOLD+'"/>'+
+    '<path d="M60 44 C46 14 28 22 34 36 C38 44 52 44 60 44Z" fill="none" stroke="'+GOLD+'" stroke-width="7" stroke-linejoin="round"/>'+
+    '<path d="M60 44 C74 14 92 22 86 36 C82 44 68 44 60 44Z" fill="none" stroke="'+GOLD+'" stroke-width="7" stroke-linejoin="round"/>'+
+    '<circle cx="60" cy="44" r="7" fill="'+GOLD2+'"/></svg>',
+  star:
+    '<svg viewBox="0 0 120 120" aria-hidden="true">'+
+    '<g fill="#FFE08A" fill-opacity=".9" stroke="#2750D8" stroke-width="8" stroke-linejoin="round">'+
+    '<polygon points="60,16 99.8,85 20.2,85"/><polygon points="60,108 20.2,39 99.8,39"/></g></svg>',
+  flame:
+    '<svg viewBox="0 0 120 120" aria-hidden="true">'+
+    '<path d="M60 8 C70 34 94 50 94 78 C94 98 79 112 60 112 C41 112 26 98 26 78 C26 60 42 50 48 32 C52 42 56 46 59 46 C62 34 58 22 60 8 Z" fill="#FF8A1C"/>'+
+    '<path d="M60 52 C66 66 78 72 78 88 C78 99 70 106 60 106 C50 106 42 99 42 88 C42 78 52 72 56 62 C58 66 60 66 60 66 C61 60 60 56 60 52 Z" fill="#FFE066"/></svg>'
+};
+
+/* ---------- audio ---------- */
+var synth = ('speechSynthesis' in window) ? window.speechSynthesis : null;
+var voices = [];
+var soundOn = true;
+var seq = 0;
+
+function pickVoice(lang){
+  var tags = lang==='he' ? ['he','iw'] : ['en-us','en'];
+  for (var k=0;k<tags.length;k++){
+    for (var i=0;i<voices.length;i++){
+      var l = (voices[i].lang||'').toLowerCase().replace('_','-');
+      if (l.indexOf(tags[k])===0) return voices[i];
+    }
+  }
+  return null;
+}
+function speakOne(text, lang, rate){
+  return new Promise(function(res){
+    if (!synth || !soundOn){ res(); return; }
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = lang==='he' ? 'he-IL' : 'en-US';
+    var v = pickVoice(lang); if (v) u.voice = v;
+    u.rate = rate || 0.9; u.pitch = 1.1;
+    var done = false, t;
+    function fin(){ if (!done){ done = true; clearTimeout(t); res(); } }
+    t = setTimeout(fin, Math.max(3500, text.length*170));
+    u.onend = fin; u.onerror = fin;
+    try { synth.speak(u); } catch(e){ fin(); }
+  });
+}
+async function say(parts){
+  var my = ++seq;
+  if (!synth || !soundOn) return;
+  try {
+    if (synth.speaking || synth.pending){ synth.cancel(); await wait(60); }
+  } catch(e){}
+  for (var i=0;i<parts.length;i++){
+    if (my !== seq) return;
+    await speakOne(parts[i][1], parts[i][0], parts[i][2]);
+    if (my !== seq) return;
+    await wait(180);
+  }
+}
+function stopSpeech(){ seq++; try { if (synth) synth.cancel(); } catch(e){} }
+
+function checkVoices(){
+  var note = $('#voiceNote');
+  if (!synth){
+    note.textContent = 'הדפדפן הזה לא תומך בקול. כל ההסברים מופיעים גם בכתב.';
+    note.hidden = false; return;
+  }
+  if (voices.length && !pickVoice('he')){
+    note.textContent = 'במכשיר הזה אין קול בעברית, ולכן ההסברים מופיעים בכתב. אפשר להוסיף קול בעברית בהגדרות הדיבור של המכשיר.';
+    note.hidden = false;
+  } else {
+    note.hidden = true;
+  }
+}
+function loadVoices(){ if (!synth) return; voices = synth.getVoices() || []; checkVoices(); }
+
+/* ---------- navigation ---------- */
+var screen = 'home';
+var INSTR = {
+  home:   'שלום! בואו נלמד אנגלית עם חנוכה. בחרו משחק.',
+  learn:  'לחצו על התמונה כדי לשמוע את המילה באנגלית. לחצו על החץ כדי לעבור למילה הבאה.',
+  listen: 'הקשיבו למילה באנגלית, ולחצו על התמונה הנכונה.',
+  memory: 'מצאו זוגות: תמונה ומילה באנגלית. לחצו על שני קלפים.',
+  count:  'לחצו על החנוכייה כדי להדליק נר ולספור באנגלית.'
+};
+function instrParts(name){
+  var p = [['he', INSTR[name]]];
+  if (name==='home') p.push(['en','Happy Chanukah!',0.85]);
+  if (name==='learn') { var w = WORDS[li]; p.push(wordSay(w), ['he', w.he]); }
+  if (name==='listen' && !L.finished && L.order[L.i]) p.push(wordSay(L.order[L.i]));
+  if (name==='count') p.push(['he', 'הדליקו ' + NOUN_HE[C.target-1]]);
+  return p;
+}
+function speakInstr(name){ say(instrParts(name)); }
+
+function go(name){
+  stopSpeech();
+  screen = name;
+  $$('[data-screen]').forEach(function(s){ s.hidden = s.getAttribute('data-screen') !== name; });
+  window.scrollTo(0,0);
+  if (name==='learn') enterLearn();
+  if (name==='listen') enterListen();
+  if (name==='memory') enterMemory();
+  if (name==='count') enterCount();
+}
+
+/* ---------- learn ---------- */
+var li = 0;
+function renderLearn(){
+  var w = WORDS[li];
+  $('#learnArt').innerHTML = ART[w.id];
+  $('#learnEn').textContent = w.en;
+  $('#learnHe').textContent = w.he;
+  $('#learnCard').style.setProperty('--sheet', SHEET[w.id]);
+  $$('#learnDots .dot').forEach(function(d,i){ d.classList.toggle('on', i===li); });
+  var card = $('#learnCard'); card.classList.remove('wob'); void card.offsetWidth; card.classList.add('wob');
+}
+function enterLearn(){
+  li = 0;
+  var dots = $('#learnDots'); dots.innerHTML = '';
+  WORDS.forEach(function(w){ var d=document.createElement('span'); d.className='dot'; d.style.setProperty('--c', SHEET[w.id]); dots.appendChild(d); });
+  renderLearn();
+  speakInstr('learn');
+}
+function learnStep(d){
+  li = (li + d + WORDS.length) % WORDS.length;
+  renderLearn();
+  var w = WORDS[li];
+  say([wordSay(w), ['he', w.he]]);
+}
+
+/* ---------- listen ---------- */
+var L = {order:[], i:0, results:[], tries:0, answered:false, token:0, finished:false};
+function starsHtml(n, total){
+  var h=''; for (var i=0;i<total;i++) h += '<svg class="st'+(i<n?' on':'')+'"><use href="#i-star"/></svg>';
+  return h;
+}
+function renderStars(){
+  var s = $('#lStars'); s.innerHTML = '';
+  for (var i=0;i<8;i++){
+    var n = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    n.setAttribute('class','st' + (L.results[i] ? ' on' : ''));
+    n.innerHTML = '<use href="#i-star"/>';
+    s.appendChild(n);
+  }
+}
+function enterListen(){
+  L.order = shuffle(WORDS).slice(0,8); L.i = 0; L.results = []; L.finished = false; L.token++;
+  $('#listenPlay').hidden = false; $('#listenEnd').hidden = true;
+  showRound();
+  speakInstr('listen');
+}
+function showRound(speakWord){
+  var w = L.order[L.i];
+  L.tries = 0; L.answered = false;
+  renderStars();
+  $('#lFb').textContent = ''; $('#lFb').className = 'fb';
+  var others = shuffle(WORDS.filter(function(x){ return x.id !== w.id; })).slice(0,2);
+  var opts = shuffle([w].concat(others));
+  var box = $('#lOpts'); box.innerHTML = '';
+  opts.forEach(function(o){
+    var b = document.createElement('button');
+    b.className = 'opt'; b.setAttribute('aria-label', o.he);
+    b.style.setProperty('--sheet', SHEET[o.id]);
+    b.innerHTML = '<div class="art">' + ART[o.id] + '</div>';
+    b.addEventListener('click', function(){ choose(b, o.id); });
+    box.appendChild(b);
+  });
+  if (speakWord) say([wordSay(w)]);
+}
+function choose(btn, id){
+  if (L.answered) return;
+  var w = L.order[L.i], fb = $('#lFb');
+  if (id === w.id){
+    L.answered = true;
+    L.results[L.i] = (L.tries === 0);
+    btn.classList.add('good');
+    var p = praise();
+    fb.textContent = p[0]; fb.className = 'fb good';
+    renderStars();
+    say([['he',p[0]], ['en',p[1],0.9]]);
+    var tk = ++L.token;
+    setTimeout(function(){
+      if (L.token !== tk || screen !== 'listen') return;
+      L.i++;
+      if (L.i >= 8) finishListen(); else showRound(true);
+    }, 2300);
+  } else {
+    L.tries++;
+    btn.classList.add('bad'); btn.disabled = true;
+    fb.textContent = 'נסו שוב'; fb.className = 'fb bad';
+    say([['he','נסו שוב'], wordSay(w)]);
+  }
+}
+function finishListen(){
+  L.finished = true;
+  var score = L.results.filter(Boolean).length;
+  $('#listenPlay').hidden = true; $('#listenEnd').hidden = false;
+  $('#lEndText').textContent = 'קיבלתם ' + score + ' כוכבים מתוך 8';
+  $('#lEndStars').innerHTML = starsHtml(score, 8);
+  say([['he','כל הכבוד! קיבלתם ' + score + ' כוכבים מתוך שמונה.'], ['en','Great job!',0.9]]);
+}
+
+/* ---------- memory ---------- */
+var M = {cards:[], open:[], lock:false, matched:0, token:0};
+function enterMemory(){
+  var pairs = shuffle(WORDS).slice(0,6);
+  var cards = [];
+  pairs.forEach(function(w){ cards.push({id:w.id, kind:'pic'}); cards.push({id:w.id, kind:'word'}); });
+  M.cards = shuffle(cards); M.open = []; M.lock = false; M.matched = 0; M.token++;
+  $('#memEnd').hidden = true;
+  var grid = $('#memGrid'); grid.innerHTML = '';
+  M.cards.forEach(function(c, i){
+    var w = BYID[c.id];
+    var b = document.createElement('button');
+    b.className = 'card'; b.setAttribute('aria-label', 'קלף');
+    var back;
+    if (c.kind==='pic'){
+      b.style.setProperty('--sheet', SHEET[c.id]);
+      back = '<div class="art">' + ART[c.id] + '</div>';
+    } else {
+      back = '<div class="w ltr">' + w.en + '</div>';
+    }
+    b.innerHTML = '<div class="in"><div class="face front"><svg viewBox="0 0 120 120"><use href="#i-magen"/></svg></div><div class="face back">' + back + '</div></div>';
+    b.addEventListener('click', function(){ flipCard(i, b); });
+    c.el = b;
+    grid.appendChild(b);
+  });
+  speakInstr('memory');
+}
+function flipCard(i, el){
+  if (M.lock) return;
+  var c = M.cards[i];
+  if (c.flipped || c.done) return;
+  c.flipped = true; el.classList.add('flip');
+  var w = BYID[c.id];
+  say([wordSay(w)]);
+  M.open.push(i);
+  if (M.open.length < 2) return;
+  M.lock = true;
+  var a = M.cards[M.open[0]], b = M.cards[M.open[1]];
+  var tk = M.token;
+  if (a.id === b.id){
+    a.done = b.done = true;
+    a.el.classList.add('done'); b.el.classList.add('done');
+    M.open = []; M.matched++;
+    setTimeout(function(){
+      if (M.token !== tk || screen !== 'memory') return;
+      if (M.matched === 6){
+        $('#memEnd').hidden = false;
+        say([['he','סיימתם! חג חנוכה שמח!'], ['en','Happy Chanukah!',0.85]]);
+      } else {
+        var p = praise(); say([['he',p[0]], ['en',p[1],0.9]]);
+      }
+      M.lock = false;
+    }, 900);
+  } else {
+    setTimeout(function(){
+      if (M.token !== tk) return;
+      a.flipped = b.flipped = false;
+      a.el.classList.remove('flip'); b.el.classList.remove('flip');
+      M.open = []; M.lock = false;
+    }, 1400);
+  }
+}
+
+/* ---------- menorah (count screen and home hero) ---------- */
+var C = {target:3, lit:0, done:false};
+var XS = [0,1,2,3,4,5,6,7,8].map(function(i){ return 24 + i*39; });
+function candleNum(i){ return i>4 ? 9-i : 8-i; } /* 1 starts at the right-hand end */
+function buildMenorah(opts){
+  opts = opts || {};
+  var nums = opts.nums !== false, hero = !!opts.hero;
+  var s = '<svg viewBox="0 0 360 244" aria-hidden="true">';
+  s += '<g fill="none" stroke="'+GOLD+'" stroke-width="7" stroke-linecap="round">';
+  for (var i=0;i<4;i++){
+    var x = XS[i], endY = 218 - 7*i, cx = x + (180-x)*0.5;
+    var d = 'M'+x+' 176 V'+(endY-20)+' C'+x+' '+endY+' '+cx+' '+endY+' 180 '+endY;
+    var xr = 360 - x, cxr = 360 - cx;
+    var dr = 'M'+xr+' 176 V'+(endY-20)+' C'+xr+' '+endY+' '+cxr+' '+endY+' 180 '+endY;
+    s += '<path d="'+d+'"/><path d="'+dr+'"/>';
+  }
+  s += '<path d="M180 150 V226" stroke-width="9"/></g>';
+  s += '<rect x="136" y="224" width="88" height="11" rx="5.5" fill="'+GOLD+'"/><rect x="116" y="232" width="128" height="9" rx="4.5" fill="'+GOLD2+'"/>';
+  for (var k=0;k<9;k++){
+    var cx2 = XS[k], shamash = (k===4);
+    var top = shamash ? 70 : 104, h = 166 - top;
+    var id = shamash ? 'cd-s' : 'cd-' + candleNum(k);
+    var order = shamash ? 0 : candleNum(k);
+    s += '<g class="cd'+((shamash && !hero)?' lit':'')+'" id="'+(hero?'h-':'')+id+'" style="--i:'+order+'">';
+    s += '<path d="M'+(cx2-15)+' 166 H'+(cx2+15)+' L'+(cx2+11)+' 177 H'+(cx2-11)+' Z" fill="'+GOLD+'"/>';
+    s += '<rect x="'+(cx2-10)+'" y="'+top+'" width="20" height="'+h+'" rx="3" fill="'+(shamash?'#6F9FF0':'#8DB8FF')+'"/>';
+    s += '<rect x="'+(cx2-10)+'" y="'+(top+14)+'" width="20" height="6" fill="#fff" opacity=".7"/>';
+    if (nums && !shamash) s += '<text x="'+cx2+'" y="154" text-anchor="middle" font-family="Heebo, Arial, sans-serif" font-size="15" font-weight="700" fill="#13214F">'+candleNum(k)+'</text>';
+    s += '<rect x="'+(cx2-1.4)+'" y="'+(top-9)+'" width="2.8" height="10" fill="#33415C"/>';
+    s += '<g class="fl">'+flame(cx2, top-7, shamash ? 1.5 : 1.3)+'</g></g>';
+  }
+  return s + '</svg>';
+}
+function setTarget(){
+  var prev = C.target, t;
+  do { t = 1 + Math.floor(Math.random()*8); } while (t === prev);
+  C.target = t;
+  $('#tNum').textContent = t;
+  $('#tText').textContent = 'הדליקו ' + NOUN_HE[t-1];
+}
+function resetCandles(){
+  C.lit = 0; C.done = false;
+  $$('#menoWrap .cd').forEach(function(g){ g.classList.toggle('lit', g.id === 'cd-s'); });
+  $('#cNum').textContent = '0'; $('#cWord').textContent = '';
+  $('#cFb').textContent = ''; $('#cFb').className = 'fb';
+  $('#lightBtn').disabled = false; $('#cNext').hidden = true;
+}
+function enterCount(){
+  $('#menoWrap').innerHTML = buildMenorah();
+  setTarget(); resetCandles();
+  speakInstr('count');
+}
+function lightNext(){
+  if (C.done || C.lit >= 8) return;
+  C.lit++;
+  var g = $('#menoWrap #cd-' + C.lit); if (g) g.classList.add('lit');
+  $('#cNum').textContent = C.lit; $('#cWord').textContent = NUMS_EN[C.lit-1];
+  if (C.lit === C.target){
+    C.done = true;
+    $('#lightBtn').disabled = true; $('#cNext').hidden = false;
+    var p = praise();
+    $('#cFb').textContent = p[0]; $('#cFb').className = 'fb good';
+    say([['en', NUMS_EN[C.lit-1], 0.8], ['he', p[0]], ['en', p[1], 0.9]]);
+  } else {
+    say([['en', NUMS_EN[C.lit-1], 0.8]]);
+  }
+}
+
+/* ---------- wiring ---------- */
+function init(){
+  $$('[data-art]').forEach(function(el){ el.innerHTML = ART[el.getAttribute('data-art')]; });
+  $('#heroMeno').innerHTML = buildMenorah({nums:false, hero:true});
+  $$('[data-go]').forEach(function(b){ b.addEventListener('click', function(){ go(b.getAttribute('data-go')); }); });
+  $$('[data-instr]').forEach(function(b){ b.addEventListener('click', function(){ speakInstr(b.getAttribute('data-instr')); }); });
+
+  $('#soundBtn').addEventListener('click', function(){
+    soundOn = !soundOn;
+    if (!soundOn) stopSpeech();
+    this.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+    this.setAttribute('aria-label', soundOn ? 'הקול פועל. לחצו כדי להשתיק' : 'הקול כבוי. לחצו כדי להפעיל');
+    this.querySelector('use').setAttribute('href', soundOn ? '#i-speaker' : '#i-mute');
+    if (soundOn) speakInstr(screen);
+  });
+
+  $('#learnCard').addEventListener('click', function(){ var w = WORDS[li]; say([wordSay(w), ['he', w.he]]); });
+  $('#learnNext').addEventListener('click', function(){ learnStep(1); });
+  $('#learnPrev').addEventListener('click', function(){ learnStep(-1); });
+
+  $('#hearBtn').addEventListener('click', function(){ if (L.order[L.i] && !L.finished) say([wordSay(L.order[L.i])]); });
+  $('#lAgain').addEventListener('click', enterListen);
+
+  $('#memAgain').addEventListener('click', enterMemory);
+
+  $('#menoWrap').addEventListener('click', lightNext);
+  $('#lightBtn').addEventListener('click', lightNext);
+  $('#cNext').addEventListener('click', function(){ setTarget(); resetCandles(); say([['he','הדליקו ' + NOUN_HE[C.target-1]]]); });
+  $('#cReset').addEventListener('click', function(){ resetCandles(); say([['he','הדליקו ' + NOUN_HE[C.target-1]]]); });
+
+  if (synth){
+    loadVoices();
+    if (synth.addEventListener) synth.addEventListener('voiceschanged', loadVoices);
+    else synth.onvoiceschanged = loadVoices;
+    setTimeout(loadVoices, 1500);
+  } else {
+    checkVoices();
+  }
+}
+init();
+})();
+</script>
+
+</body></html>
