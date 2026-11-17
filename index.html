@@ -557,6 +557,7 @@ function enterListen(){
 }
 function showRound(speakWord){
   var w = L.order[L.i];
+  $('#listenPlay').setAttribute('data-word-id', w.id);
   L.tries = 0; L.answered = false;
   renderStars();
   $('#lFb').textContent = ''; $('#lFb').className = 'fb';
