@@ -5,7 +5,7 @@ from playwright.sync_api import Page
 class QuizPage:
 
     def __init__(self, page:Page): self.page = page
-    
+
     def open(self):
         return self.page.goto("https://chayamm-lab.github.io/english-for-kids/")
 
@@ -26,3 +26,6 @@ class QuizPage:
                 return button
 
         raise AssertionError("לא נמצאה תמונה שגויה לבחירה")
+
+    def replay_word(self):
+        self.page.locator("#hearBtn").click()

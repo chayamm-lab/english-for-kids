@@ -124,3 +124,36 @@ def test_listening_shows_final_score(page: Page):
     expect(
         page.get_by_text("קיבלתם 6 כוכבים מתוך 8", exact=True)
     ).to_be_visible()
+
+def test_replay_requests_current_word_in_english(page: Page):
+    page.add_init_script("""
+        window.spoken = [];
+
+        window.speechSynthesis.speak = (utterance) => {
+            window.spoken.push({
+                text: utterance.text,
+                lang: utterance.lang
+            });
+            queueMicrotask(() => utterance.onend?.());
+        };
+    """)
+
+    quiz = QuizPage(page)
+    quiz.open()
+    quiz.open_listening()
+
+    word_id = quiz.current_word_id()
+    pronunciations = {"dreidel": "dray dull", "star": "Star of David"}
+    expected_word = pronunciations.get(word_id, word_id)
+
+    page.wait_for_function(
+        "() => window.spoken.some(item => item.lang === 'en-US')"
+    )
+    page.evaluate("() => { window.spoken.length = 0; }")
+
+    quiz.replay_word()
+
+    page.wait_for_function("() => window.spoken.length > 0")
+    assert page.evaluate("() => window.spoken") == [
+        {"text": expected_word, "lang": "en-US"}
+    ]
