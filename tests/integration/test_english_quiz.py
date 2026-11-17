@@ -1,3 +1,4 @@
+import pytest
 import re
 from playwright.sync_api import Page, expect
 from pages.quiz_page import QuizPage
@@ -77,3 +78,49 @@ def test_correct_answer_starts_next_round(page: Page):
         "data-word-id", first_word_id
     )
     expect(page.locator("#lFb")).to_have_text("")
+
+@pytest.mark.parametrize(
+    "make_mistake, expected_stars",
+    [(False, 1), (True, 0)],
+    ids=["first-try", "after-mistake"],
+)
+def test_listening_score(page: Page, make_mistake: bool, expected_stars: int):
+    quiz = QuizPage(page)
+    quiz.open()
+    quiz.open_listening()
+
+    first_word_id = quiz.current_word_id()
+    correct_name = PICTURE_NAMES[first_word_id]
+
+    if make_mistake:
+        quiz.wrong_picture(correct_name).click()
+
+    quiz.choose_picture(correct_name)
+
+    expect(page.locator("#listenPlay")).not_to_have_attribute(
+        "data-word-id", first_word_id
+    )
+    expect(page.locator("#lStars .st.on")).to_have_count(expected_stars)
+
+def test_listening_shows_final_score(page: Page):
+    quiz = QuizPage(page)
+    quiz.open()
+    quiz.open_listening()
+
+    for round_number in range(1, 9):
+        word_id = quiz.current_word_id()
+        correct_name = PICTURE_NAMES[word_id]
+
+        if round_number <= 2:
+            quiz.wrong_picture(correct_name).click()
+
+        quiz.choose_picture(correct_name)
+
+        if round_number < 8:
+            expect(page.locator("#listenPlay")).not_to_have_attribute(
+                "data-word-id", word_id
+            )
+
+    expect(
+        page.get_by_text("קיבלתם 6 כוכבים מתוך 8", exact=True)
+    ).to_be_visible()
